@@ -26,18 +26,18 @@ button {
 .btn-container {
     display: flex;
 }
-#rock {
+.rps.rock {
     background-color: #dda15e;
     border: none;
     border-radius: 1em;
 }
-#paper {
+.rps.paper {
     background-color: #f1faee;
     border: none;
     border-radius: 1em;
     color: black;
 }
-#scissors {
+.rps.scissors {
     background-color: #e63946;
     border: none;
     border-radius: 1em;

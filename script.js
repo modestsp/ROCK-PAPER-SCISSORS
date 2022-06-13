@@ -30,8 +30,10 @@ function disable() {
     document.querySelectorAll('.rps').forEach((btn) => {
         if (btn.disabled == false) {
             btn.disabled = true;
+            buttons.forEach(btn => btn.classList.toggle('disabled'))
         } else {
             btn.disabled = false;
+            buttons.forEach(btn => btn.classList.toggle('disabled'))
         }
     })
 }
@@ -112,7 +114,8 @@ resetButton.addEventListener('click', reset);
 
 buttons.forEach((button) => {
     button.addEventListener('click',() => {
-        playerChoice = button.id
+        playerChoice = button.textContent.toLowerCase();
+        console.log(playerChoice)
         playRound(playerChoice);
     });
 })
