@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Papers and Scissors</title>
+    <title>Rock, Paper and Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <h1>ROCK PAPER SCISSORS</h1>
+    <div class="container">
+        <img src="https://miro.medium.com/max/1400/1*8du96SQUQ0NlWmWvVu20Zw.png" alt="rock-paper-scissors">
+        <div class="btn-container">
+        <button class="rps" id="rock">ROCK</button>
+        <button class="rps" id="paper">PAPER</button>
+        <button class="rps" id="scissors">SCISSORS</button>
+        </div>
+        <button id="reset">Reset</button> 
         
+        <div id="display">
+            
+            <span id="pScore">Player Score :</span>
+            <span id="cScore">Computer Score :</span>
+            <p id="roundInfo"></p>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

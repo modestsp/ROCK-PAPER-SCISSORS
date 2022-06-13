@@ -1,0 +1,71 @@
+body {
+    background-color: rgb(150, 125, 125);
+        font-family: 'Roboto', sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 500px;
+    height: auto;
+    margin: 40px;
+    border-radius: 1em;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    color: #f1faee;
+    font-weight: bold;
+    margin: 5px 10px;
+}
+.btn-container {
+    display: flex;
+}
+#rock {
+    background-color: #dda15e;
+    border: none;
+    border-radius: 1em;
+}
+#paper {
+    background-color: #f1faee;
+    border: none;
+    border-radius: 1em;
+    color: black;
+}
+#scissors {
+    background-color: #e63946;
+    border: none;
+    border-radius: 1em;
+}
+#reset {
+    background-color: #283618;
+    border: none;
+    border-radius: 1em;
+    width: 90px;
+    height: 45px;
+}
+
+.display {
+    display: flex;
+}
+
+#pScore, #cScore {
+    font-size: 20px;
+}
+
+#pScore, #cScore, #roundInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;   
+}

@@ -1,84 +1,119 @@
-console.log('Hello, World!')
+
 
 let playerChoice = '';
 let computerChoice = '';
-let playerScore;
-let computerScore;
+let playerScore = 0;
+let computerScore = 0;
 
 function computerPlay() {
     let randomPlay = Math.floor(Math.random() * 3);
     if (randomPlay == 0) {
-        return computerChoice = "Rock";
+        return computerChoice = "rock";
     } else if (randomPlay == 1) {
-        return computerChoice = "Scissors";
+        return computerChoice = "scissors";
     } else {
-        return computerChoice = "Papers";
+        return computerChoice = "paper";
     }
 }
 
-function playerSelection() {
-    let answer = prompt('Please, enter : Rock, Papers or Scissors').
-    toLowerCase();
-    return playerChoice = answer[0].toUpperCase() + answer.substring(1);
-}
-
-function playRound() {
-    playerSelection();
-    computerPlay();
-    if (playerChoice == computerChoice) {
-        console.log('Draw')
-    } else if (playerChoice == 'Rock' && computerChoice == 'Scissors') {
-        console.log(`You won! ${playerChoice} wins ${computerChoice}`);
-        return playerScore += 1;
-    } else if (playerChoice == 'Scissors' && computerChoice == 'Papers') {
-        console.log(`You won! ${playerChoice} wins ${computerChoice}`);
-        return playerScore += 1;
-    } else if (playerChoice == 'Papers' && computerChoice == 'Rock') {
-        console.log(`You won! ${playerChoice} wins ${computerChoice}`);
-        return playerScore += 1;
-    } else if (playerChoice == 'Papers' && computerChoice == 'Scissors') {
-        console.log(`You lose! ${computerChoice} wins ${playerChoice}`);
-        return computerScore += 1;
-    } else if (playerChoice == 'Scissors' && computerChoice == 'Rock') {
-        console.log(`You lose! ${computerChoice} wins ${playerChoice}`);
-        return computerScore += 1;
-    } else if (playerChoice == 'Rock' && computerChoice == 'Papers') {
-        console.log(`You lose! ${computerChoice} wins ${playerChoice}`);
-        return computerScore += 1;
-    }
-}
-===
-function game() {
+// Reset game
+function reset() {
     playerScore = 0;
     computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    }
-    if (playerScore == computerScore) {
-        console.log(`Draw! Your score: ${playerScore} Computer score: ${computerScore}`);
-    } else if (playerScore > computerScore) {
-        console.log(`You won! Your score: ${playerScore} Computer score: ${computerScore}`);
-    } else {
-        console.log(`You lose! Your score: ${playerScore} Computer score: ${computerScore}`)
+    roundInfo.textContent = ''
+    pScore.textContent = `Player Score: ${playerScore}`
+    cScore.textContent = `Computer Score: ${computerScore}`
+    disable();
+}
+
+function disable() {
+    document.querySelectorAll('.rps').forEach((btn) => {
+        if (btn.disabled == false) {
+            btn.disabled = true;
+        } else {
+            btn.disabled = false;
+        }
+    })
+}
+
+
+function gameOver() {
+    if(playerScore >= 5) {
+        roundInfo.textContent = `YOU WON! ${playerScore} to ${computerScore}` 
+        pScore.textContent = `Player Score: ${playerScore}`
+        cScore.textContent = `Computer Score: ${computerScore}`  
+        disable();      
+    } else if (computerScore >= 5) {
+        roundInfo.textContent = `YOU lOSE! ${computerScore} to ${playerScore}` 
+        pScore.textContent = `Player Score: ${playerScore}`
+        cScore.textContent = `Computer Score: ${computerScore}` 
+        disable();
     }
 }
 
 
-const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+function playRound(playerChoice) {
+    computerPlay();
 
-const admitted = document.querySelector('.admitted');
-const refused = document.querySelector('.refused');
-admitted.textContent = 'Admit: ';
-refused.textContent = 'Refuse: ';
+    if (playerChoice == computerChoice) {
+        roundInfo.textContent = `Draw!`
+    } else if (playerChoice == 'rock' && computerChoice == 'scissors') {
+        playerScore += 1;
+        pScore.textContent = `Player Score: ${playerScore}`
+        roundInfo.textContent = `You won! Rock wins Scissors`;
+        gameOver();
 
-// loop starts here
-for (const person of people) {
-    if (person === "Phil" || person === "Lola") {
-        refused.textContent += `${person} ,`;
-    } else {
-        admitted.textContent += `${person} ,`;
+    } else if (playerChoice == 'scissors' && computerChoice == 'paper') {
+        playerScore += 1;
+        pScore.textContent = `Player Score: ${playerScore}`
+        roundInfo.textContent = `You won! Scissors wins Paper`;
+        gameOver();
+
+    } else if (playerChoice == 'paper' && computerChoice == 'rock') {
+        playerScore += 1;
+        pScore.textContent = `Player Score: ${playerScore}`
+        roundInfo.textContent = `You won! Paper wins Rock`;
+        gameOver();
+
+    } else if (playerChoice == 'paper' && computerChoice == 'scissors') {
+        computerScore += 1;
+        cScore.textContent = `Computer Score: ${computerScore}`
+        roundInfo.textContent = `You lose! Scissors wins Paper`;
+        gameOver();
+ 
+    } else if (playerChoice == 'scissors' && computerChoice == 'rock') {
+        computerScore += 1;
+        cScore.textContent = `Computer Score: ${computerScore}`
+        roundInfo.textContent = `You lose! Rock wins Scissors`;
+        gameOver();
+
+    } else if (playerChoice == 'rock' && computerChoice == 'paper') {
+        computerScore += 1;
+        cScore.textContent = `Computer Score: ${computerScore}`
+        roundInfo.textContent = `You lose! Paper wins Rock`;
+        gameOver();
+
     }
 }
-// refused.textContent += ;
-// admitted.textContent += ;
+
+const buttons = document.querySelectorAll('.rps');
+const pScore = document.querySelector('#pScore');
+const cScore = document.querySelector('#cScore');
+const roundInfo = document.querySelector('#roundInfo')
+const resetButton = document.querySelector('#reset');
+
+// Display Scores
+pScore.textContent = `Player Score: ${playerScore}`
+cScore.textContent = `Computer Score: ${computerScore}`
+
+
+// Reset game
+resetButton.addEventListener('click', reset);
+
+buttons.forEach((button) => {
+    button.addEventListener('click',() => {
+        playerChoice = button.id
+        playRound(playerChoice);
+    });
+})
 
