@@ -46,7 +46,7 @@ function gameOver() {
         cScore.textContent = `Computer Score: ${computerScore}`  
         disable();      
     } else if (computerScore >= 5) {
-        roundInfo.textContent = `YOU lOSE! ${computerScore} to ${playerScore}` 
+        roundInfo.textContent = `YOU LOSE! ${computerScore} to ${playerScore}` 
         pScore.textContent = `Player Score: ${playerScore}`
         cScore.textContent = `Computer Score: ${computerScore}` 
         disable();

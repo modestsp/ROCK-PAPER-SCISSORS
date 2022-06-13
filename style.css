@@ -19,7 +19,7 @@ img {
 button {
     width: 100px;
     height: 50px;
-    color: #f1faee;
+    color: #192122;
     font-weight: bold;
     margin: 5px 10px;
 }
@@ -35,7 +35,6 @@ button {
     background-color: #f1faee;
     border: none;
     border-radius: 1em;
-    color: black;
 }
 .rps.scissors {
     background-color: #e63946;
@@ -48,6 +47,7 @@ button {
     border-radius: 1em;
     width: 90px;
     height: 45px;
+    color: #f8f5f5;
 }
 
 .display {
